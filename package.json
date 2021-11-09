@@ -1,0 +1,60 @@
+{
+    "name": "backend-3",
+    "version": "0.0.2",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon",
+        "start:prod": "NODE_ENV='production' PORT=3000 node -r @babel/register ./source/index.js",
+        "build": "NODE_ENV=production node -r @babel/register './node_modules/.bin/webpack' --config=./webpack/webpack.config.js",
+        "lint:eslint": "jest --projects 'jest/jest.eslint.config.json'"
+    },
+    "engines": {
+        "node": ">=14.15.*"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.12.9",
+        "@babel/plugin-proposal-class-properties": "^7.12.1",
+        "@babel/preset-env": "^7.12.7",
+        "@babel/register": "^7.12.1",
+        "@lectrum/config-commitlint": "^1.1.0",
+        "@lectrum/eslint-config-core": "^1.1.15",
+        "babel-core": "^7.0.0-bridge.0",
+        "babel-eslint": "~10.1.0",
+        "babel-jest": "^26.6.3",
+        "babel-loader": "^8.2.2",
+        "babel-preset-jest": "^26.6.2",
+        "eslint": "^7.14.0",
+        "faker": "^5.5.3",
+        "jest": "^26.6.3",
+        "jest-runner-eslint": "^0.10.0",
+        "mongodb-memory-server": "^6.9.2",
+        "nock": "^13.2.0",
+        "nodemon": "^2.0.14",
+        "prettier": "^2.4.1",
+        "supertest": "^6.1.6",
+        "webpack": "^5.62.1",
+        "webpack-bundle-analyzer": "^4.5.0",
+        "webpack-cli": "^4.9.1",
+        "webpack-merge": "^5.8.0",
+        "webpack-node-externals": "^2.5.2"
+    },
+    "dependencies": {
+        "@godaddy/terminus": "^4.4.1",
+        "ajv": "^6.12.6",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "cookie-parser": "^1.4.5",
+        "debug": "^4.3.2",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-rate-limit": "^5.5.1",
+        "express-session": "^1.17.2",
+        "helmet": "^4.6.0",
+        "jsonwebtoken": "^8.5.1",
+        "moment": "^2.29.1",
+        "mongoose": "^6.0.12",
+        "uuid": "^8.3.2",
+        "winston": "^3.3.3"
+    }
+}
