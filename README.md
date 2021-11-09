@@ -18,10 +18,8 @@ PORT=3000
 # Session
 PASSWORD='Very_strong_pa$$word_is%123456789'
 
-# DB
-DB_URL='lab.lectrum.io'
-DB_PORT='37019'
-DB_NAME='your_db_name'
+# DB → https://account.mongodb.com/account/login
+DB_URL='some mongo atlas connection string'
 ```
 
 #### Документация по проекту
