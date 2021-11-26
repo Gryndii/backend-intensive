@@ -1,22 +1,26 @@
 import dg from 'debug';
 
-const debug = dg('router:auth');
+const debug = dg('router:lessons');
 
-export const login = (req, res) => {
+export const get = (req, res) => {
     debug(`${req.method} - ${req.originalUrl}`);
 
+    const data = [];
+
     try {
-        res.sendStatus(204);
+        res.status(200).json({ data });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
-export const logout = (req, res) => {
+export const create = (req, res) => {
     debug(`${req.method} - ${req.originalUrl}`);
 
+    const data = { hash: '' };
+
     try {
-        res.sendStatus(204);
+        res.status(201).json({ data });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

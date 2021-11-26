@@ -1,8 +1,9 @@
 import { Router } from 'express';
 import { login, logout } from './route';
 
-export const auth = Router();
+export const router = Router();
 
-auth.post('/login', login);
+router.post('/login', login);
+router.post('/logout', logout);
 
-auth.post('/logout', logout);
+export { router as auth };

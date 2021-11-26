@@ -8,7 +8,7 @@ import {
 } from './utils';
 
 // Routers
-import { auth, users } from './routers';
+import { auth, users, classes, lessons } from './routers';
 
 const app = express();
 
@@ -17,5 +17,7 @@ app.use(express.json({ limit: '10kb' }));
 
 app.use('/', auth);
 app.use('/users', users);
+app.use('/classes', classes);
+app.use('/lessons', lessons);
 
 export { app };

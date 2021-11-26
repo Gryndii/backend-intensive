@@ -1,8 +1,8 @@
 import dg from 'debug';
 
-const debug = dg('router:auth');
+const debug = dg('router:classes:classHash:education');
 
-export const login = (req, res) => {
+export const enroll = (req, res) => {
     debug(`${req.method} - ${req.originalUrl}`);
 
     try {
@@ -12,7 +12,7 @@ export const login = (req, res) => {
     }
 };
 
-export const logout = (req, res) => {
+export const expel = (req, res) => {
     debug(`${req.method} - ${req.originalUrl}`);
 
     try {
