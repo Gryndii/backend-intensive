@@ -5,6 +5,7 @@ import session from 'express-session';
 // Instruments
 import {
     sessionOptions,
+    logger,
 } from './utils';
 
 // Routers
@@ -12,8 +13,16 @@ import { auth, users, classes, lessons } from './routers';
 
 const app = express();
 
-app.use(session(sessionOptions));
-app.use(express.json({ limit: '10kb' }));
+const middleware = [
+    session(sessionOptions),
+    express.json({ limit: '10kb' }),
+];
+
+if (process.env.NODE_ENV === 'development') {
+    middleware.push(logger);
+}
+
+app.use(middleware);
 
 app.use('/', auth);
 app.use('/users', users);
