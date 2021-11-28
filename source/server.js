@@ -13,16 +13,16 @@ import { auth, users, classes, lessons } from './routers';
 
 const app = express();
 
-const middleware = [
+const middlewares = [
     session(sessionOptions),
     express.json({ limit: '10kb' }),
 ];
 
 if (process.env.NODE_ENV === 'development') {
-    middleware.push(logger);
+    middlewares.push(logger);
 }
 
-app.use(middleware);
+app.use(middlewares);
 
 app.use('/', auth);
 app.use('/users', users);
