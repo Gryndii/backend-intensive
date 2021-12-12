@@ -5,9 +5,12 @@ import session from 'express-session';
 // Instruments
 import {
     sessionOptions,
+} from './utils';
+import {
     logger,
     errorLogger,
-} from './utils';
+} from './utils/loggers';
+import { NotFoundError } from './utils/errors';
 
 // Routers
 import { auth, users, classes, lessons } from './routers';
@@ -30,6 +33,14 @@ app.use('/users', users);
 app.use('/classes', classes);
 app.use('/lessons', lessons);
 
+app.use('/*', (req, res, next) => {
+    next(
+        new NotFoundError(
+            `Unknown endpoint: "${req.baseUrl}", method: "${req.method}"`,
+            404,
+        ),
+    );
+});
 
 if (process.env.NODE_ENV !== 'test') {
     app.use(errorLogger);
