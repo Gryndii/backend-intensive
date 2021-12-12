@@ -10,7 +10,7 @@ const loggerFormat = printf(({ message, label, timestamp }) => {
     `;
 });
 
-const winstonLogger = createLogger({
+export const logger = createLogger({
     format: combine(
         label({ label: 'API Request' }),
         timestamp(),
@@ -20,8 +20,8 @@ const winstonLogger = createLogger({
     transports: [ new transports.Console() ],
 });
 
-export const logger = (req, res, next) => {
-    winstonLogger.debug({
+export const loggerMiddleware = (req, res, next) => {
+    logger.debug({
         method: req.method,
         body:   req.body,
     });

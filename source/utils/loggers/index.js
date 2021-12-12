@@ -1,2 +1,3 @@
-export { logger } from './logger';
-export { errorLogger } from './errorLogger';
+export { logger, loggerMiddleware } from './logger';
+export { errorLogger, errorLoggerMiddleware } from './errorLogger';
+

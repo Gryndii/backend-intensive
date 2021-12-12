@@ -7,8 +7,8 @@ import {
     sessionOptions,
 } from './utils';
 import {
-    logger,
-    errorLogger,
+    loggerMiddleware,
+    errorLoggerMiddleware,
 } from './utils/loggers';
 import { NotFoundError } from './utils/errors';
 
@@ -20,10 +20,11 @@ const app = express();
 const middlewares = [
     session(sessionOptions),
     express.json({ limit: '10kb' }),
+    express.urlencoded(),
 ];
 
 if (process.env.NODE_ENV === 'development') {
-    middlewares.push(logger);
+    middlewares.push(loggerMiddleware);
 }
 
 app.use(middlewares);
@@ -43,7 +44,7 @@ app.use('/*', (req, res, next) => {
 });
 
 if (process.env.NODE_ENV !== 'test') {
-    app.use(errorLogger);
+    app.use(errorLoggerMiddleware);
 }
 
 export { app };
