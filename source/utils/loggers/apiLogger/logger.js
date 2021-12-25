@@ -10,7 +10,7 @@ const loggerFormat = printf(({ message, label, timestamp }) => {
     `;
 });
 
-export const logger = createLogger({
+export const apiLogger = createLogger({
     format: combine(
         label({ label: 'API Request' }),
         timestamp(),
@@ -19,11 +19,3 @@ export const logger = createLogger({
     level:      'debug',
     transports: [ new transports.Console() ],
 });
-
-export const loggerMiddleware = (req, res, next) => {
-    logger.debug({
-        method: req.method,
-        body:   req.body,
-    });
-    next();
-};

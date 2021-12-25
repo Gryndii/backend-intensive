@@ -1,4 +1,4 @@
-import { validateStatus } from './validateStatus';
+import { validateStatus } from '../statusValidator';
 
 export class NotFoundError extends Error {
     constructor(message, statusCode = 400, ...rest) {

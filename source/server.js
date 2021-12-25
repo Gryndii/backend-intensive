@@ -7,7 +7,7 @@ import {
     sessionOptions,
 } from './utils';
 import {
-    loggerMiddleware,
+    apiLoggerMiddleware,
     errorLoggerMiddleware,
 } from './utils/loggers';
 import { NotFoundError } from './utils/errors';
@@ -24,7 +24,7 @@ const middlewares = [
 ];
 
 if (process.env.NODE_ENV === 'development') {
-    middlewares.push(loggerMiddleware);
+    middlewares.push(apiLoggerMiddleware);
 }
 
 app.use(middlewares);
