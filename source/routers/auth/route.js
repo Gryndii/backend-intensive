@@ -22,3 +22,15 @@ export const logout = (req, res) => {
     }
 };
 
+export const cookieLogin = (req, res) => {
+    debug(`${req.method} - ${req.originalUrl}`);
+
+    try {
+        req.session.user = {
+            email: req.body.email,
+        };
+        res.sendStatus(204);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};

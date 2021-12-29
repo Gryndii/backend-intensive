@@ -1,6 +1,6 @@
 import Ajv from 'ajv';
 
-export const validator = (schema) => (req, res, next) => {
+export const validator = (schema, errorStatus = 400) => (req, res, next) => {
     const ajv = new Ajv({ allErrors: true });
     const validate = ajv.compile(schema);
 
@@ -12,5 +12,5 @@ export const validator = (schema) => (req, res, next) => {
 
     const errors = validate.errors.map(({ message }) => message).join(', ');
 
-    res.status(400).json({ message: errors });
+    res.status(errorStatus).json({ message: errors });
 };
